@@ -1,5 +1,5 @@
 const puppeteer = require("puppeteer");
-const { USER_AGENT } = require("./data");
+const { USER_AGENT } = require("../config");
 
 const puppeteerConfig = {
     headless: false,

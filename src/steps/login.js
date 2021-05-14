@@ -1,14 +1,14 @@
 // Responsible for logging into the service
 
 const ppr = require("../ppr");
-const data = require("../data");
+const data = require("../../config");
 const log4js = require("log4js");
 const accountInfo = require('./accountInfo');
 
 // Selectors
 const INPUT_USER = "input[name=username]";
 const INPUT_PASS = "input[name=password]";
-const SUBMIT = "button[id=login-button]";
+// const SUBMIT = "button[id=login-button]";
 
 const logger = log4js.getLogger("@login");
 

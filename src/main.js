@@ -1,13 +1,7 @@
-const { AUCTION_DATA, USERNAME, PASSWORD } = require("./data");
-const { create, newPage, dispose } = require("./browser");
+const { AUCTION_DATA, USERNAME, PASSWORD } = require("../config");
+const { create } = require("./browser");
 const login = require("./steps/login");
-const auctionInfo = require("./steps/auctionInfo");
-const accountInfo = require("./steps/accountInfo");
-const func = require("./ppr");
-const bid = require("./steps/bid");
-const rw = require("random-words");
 const log4js = require("log4js");
-const store = require("./store");
 const register = require("./steps/register");
 
 log4js.configure({

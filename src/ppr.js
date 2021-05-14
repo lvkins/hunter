@@ -51,12 +51,9 @@ const closePopups = async (page, expressions) => {
 
                 ++count;
 
-                // Hover the element
-                // await _.hover();
-
                 // Click the element
                 // Not working (Error: Node is either not visible or not an HTMLElement) @see https://github.com/GoogleChrome/puppeteer/issues/2977
-                //await _.click(); 
+                // await _.click(); 
 
                 await page.evaluate(e => e.click(), el);
 
@@ -103,5 +100,5 @@ module.exports = {
     waitForRandom,
     closePopups,
     gotoConditional,
-    sleep,
+    sleep
 };

@@ -3,7 +3,6 @@ const STORE = [];
 
 function register(auction) {
     STORE.push(auction);
-    auction.scheduleBet();
 }
 
 function unregister(auction) {

@@ -79,7 +79,8 @@ class Auction {
             delete this._timerHandle;
         }
 
-        const duration = this.bidDate() - Date.now() - data.STANDBY_DURATION;
+        const duration = this.bidDate() - Date.now()
+            - data.STANDBY_DURATION;
 
         // Schedule a bet
         this._timerHandle = setTimeout(this._createBet, duration, this);

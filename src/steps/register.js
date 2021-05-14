@@ -1,7 +1,7 @@
 // Schedules an auction for hunting
 const log4js = require("log4js");
 const ppr = require("../ppr");
-const data = require("../data");
+const data = require("../../config");
 const store = require("../store");
 const Auction = require("../auction");
 
@@ -32,7 +32,9 @@ module.exports = async (page, auctionData) => {
         return false;
     }
 
-    // Register
-    logger.info(`  Registered to bid ${auction.finalPrice()} PLN at ${auction.bidDate().toISOString()}`);
+    // Start timers & register
+    auction.scheduleBet();
     store.register(auction);
+
+    logger.info(`  Registered to bid ${auction.finalPrice()} PLN at ${auction.bidDate().toISOString()}`);
 }

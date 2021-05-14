@@ -3,7 +3,7 @@ const log4js = require("log4js");
 const ppr = require("../ppr");
 const accountInfo = require("./accountInfo");
 const login = require("./login");
-const { USERNAME, PASSWORD } = require("../data");
+const { USERNAME, PASSWORD } = require("../../config");
 
 // Selectors
 const BUTTON_BID = "//button[text()='LICYTUJ']";
@@ -86,10 +86,20 @@ module.exports = async (page, auction, standbyDuration = 0) => {
         return false;
     }
 
+    // Once we went through the forms and such, we can safely standby rest of the time.
+    // Check the exact time thats left to bid.
+    const waitTime = (auction.bidDate() - Date.now()) + standbyDuration;
+
+    // Too late
+    if (waitTime < 0) {
+        logger.error("Bid wasnt made on time");
+        return false;
+    }
+
     // Now that we are ready to bid, simply wait for the hunt time
-    if (standbyDuration > 0) {
-        logger.info("Standing by for the bid...", standbyDuration);
-        await page.waitFor(standbyDuration);
+    if (waitTime > 0) {
+        logger.info("Standing by for the bid...", waitTime);
+        await page.waitFor(waitTime);
     }
 
     // Bid!
